@@ -3,10 +3,9 @@
 <details><summary>Answer</summary>
 <p>
 #### yes, even hidden code blocks!
-```
-bash
-echo "mkdir <your Direcotry Name>"
-cd <your Direcotry Name>
+```python
+mkdir myDir
+cd myDir
 git init
 ```
 </p>
