@@ -4,9 +4,9 @@
 <p>
   
 ```
-mkdir myDir
-cd myDir
-git init
+$ mkdir myDir
+$ cd myDir
+$ git init
 ```
 </p>
 </details>
