@@ -1,6 +1,11 @@
-#Create a new git repository on local computer
+## Create a new git repository on local computer
 
+<details><summary>Answer</summary>
+<p>
+```python
 mkdir <your Direcotry Name>
 cd <your Direcotry Name>
 git init
-
+```
+</p>
+</details>
