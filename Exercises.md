@@ -15,6 +15,7 @@ $ git version
 <p>
 
 ```
+#Create a directory, move into it and run "git init"
 $ mkdir -p /apps/myDir
 $ cd /apps/myDir
 $ git init
@@ -45,9 +46,11 @@ $ git init
 <p>
 
 ```
-git init creates a .git folder in the folder from where the "git init" command was run.
-If "git init" was run from "/apps/myDir" then you will see "/apps/myDir/.git" folder after running init.
-.git is the folder which git uses to track the various objects within a working directory (/apps/myDir/).
+git init creates a .git folder inside the folder from where the "git init" was run.
+If "git init" was run from "/apps/myDir" then 
+we will see "/apps/myDir/.git" folder after running init.
+.git is the folder which git uses to track the 
+various objects within a working directory (/apps/myDir/ in our case).
 ```
 </p>
 </details>
@@ -58,10 +61,19 @@ If "git init" was run from "/apps/myDir" then you will see "/apps/myDir/.git" fo
 <p>
 
 ```
-Between a file creation and commiting using git, below are the "areas" where a file exists in it lifecycle till it gets commited:
-1) Working Directory - This is where you ran git init command in (has .git folder) and where you create the files/folders.  
-2) Staging Area - This is where file gets tracked for commit using add command. Exa. git add <filename> adds file to staging area.
-3) Git Repository - This is where file gets addded once an added file gets committed. Exa. git commit -m "Message"
+Between a file creation and commiting it in git repo,
+below are the "areas" where a file exists in it lifecycle:
+1) Working Directory:
+This is where you ran git init command in (has .git folder)
+and where you create the files/folders.  
+
+2) Staging Area:
+This is where file gets tracked for commit using add command.
+Exa. git add <filename> adds file to staging area.
+
+3) Git Repository:
+This is where file gets addded once an added file gets committed.
+Exa. git commit -m "Message"
 ```
 </p>
 </details>
@@ -72,6 +84,7 @@ Between a file creation and commiting using git, below are the "areas" where a f
 <p>
 
 ```
+#Using "git add" command
 $ touch file1.txt
 $ git add file1.txt
 ```
@@ -83,13 +96,16 @@ $ git add file1.txt
 <p>
 
 ```
-Untracked files - Files which have been created by user but not added to staging area using "git add".
-Untracked files are shown in red in "git status" output.
+1) Untracked files:
+Files which have been created by user but not added
+to staging area using "git add". Untracked files are
+shown in red in "git status" output.
 
-Tracked files - Files which have been addded to staging area but haven't been committed as yet. 
-Onlu "git add" has been performed on these files. "git commit" hasn't been initiated as yet.
+2) Tracked files:
+Files which have been addded to staging area but
+haven't been committed as yet. Only "git add" has
+been performed on these files, not "git commit".
 Tracked files are shown in green in "git status" output.
-
 ```
 </p>
 </details>
@@ -100,11 +116,12 @@ Tracked files are shown in green in "git status" output.
 <p>
 
 ```
+#Using "git status" or "git ls-files -s"
 $ git status
 $ git ls-files -s
 
-"git status" will show file1.txt in green meaning it is currently tracked (not committed).
-"git ls-files -s" can be a test to see if a file is tracked, but what if it is already committed? 
+"git status" will show currently tracked (not committed) files (file1.txt) in green.
+"git ls-files -s" output can give can be a test to see if a file is tracked, but what if it is already committed? 
 
 ###Perform below steps to see it in action
 ###create directory using "mkdir"
@@ -332,4 +349,32 @@ Not surpisingly this is actually 2 exp 160 where sha1 hash length was 160 bits.
 ```
 </p>
 </details>
+
+
+> Q. I have added files using "git add", can I commit files now using "git commit"?
+Or do I need to check some pre-requisite?
+<details><summary>Ans.</summary>
+<p>
+
+```
+If user.name and user.email is already configured then there is no pre-req needed
+to commit files. If not, we need to configure user name and email.
+```
+</p>
+</details>
+
+> Q. How can I check what is the current user.name and user.email
+configured on my system?
+<details><summary>Ans.</summary>
+<p>
+
+```bash
+#Using "git config" command
+$ git config user.name
+$ git config user.email
+$ git config --list | grep user
+```
+</p>
+</details>
+
 
