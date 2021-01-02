@@ -1,4 +1,4 @@
-- How to check the version of git installed on your system?
+> Q. How to check the version of git installed on your system?
 <details><summary>Ans.</summary>
 <p>
 
@@ -8,7 +8,9 @@ $ git version
 </p>
 </details>
 
-- How to create a new git repository on local computer?
+
+
+> Q. How to create a new git repository on local computer?
 <details><summary>Ans.</summary>
 <p>
 
@@ -21,7 +23,7 @@ $ git init
 </details>
 
 
-- What is a working directory?
+> Q. What is a working directory?
 <details><summary>Ans.</summary>
 <p>
 
@@ -38,7 +40,7 @@ $ git init
 </details>
 
 
-- What does ```git init ``` command do?
+> Q. What does ```git init ``` command do?
 <details><summary>Ans.</summary>
 <p>
 
@@ -51,7 +53,7 @@ If "git init" was run from "/apps/myDir" then you will see "/apps/myDir/.git" fo
 </details>
 
 
-- What is Working directory, staging area and git repository?
+> Q. What is Working directory, staging area and git repository?
 <details><summary>Ans.</summary>
 <p>
 
@@ -65,7 +67,7 @@ Between a file creation and commiting using git, below are the "areas" where a f
 </details>
 
 
-- How to create a new file file1.txt and add it to staging area?
+> Q. How to create a new file file1.txt and add it to staging area?
 <details><summary>Ans.</summary>
 <p>
 
@@ -76,7 +78,7 @@ $ git add file1.txt
 </p>
 </details>
 
-- What does it mean if we say a file is untracked versus tracked?
+> Q. What does it mean if we say a file is untracked versus tracked?
 <details><summary>Ans.</summary>
 <p>
 
@@ -93,7 +95,7 @@ Tracked files are shown in green in "git status" output.
 </details>
 
 
-- How to check if file1.txt exists in staging area i.e. is tracked file?
+> Q. How to check if file1.txt exists in staging area i.e. is tracked file?
 <details><summary>Ans.</summary>
 <p>
 
@@ -155,7 +157,7 @@ $ git ls-files -s
 </details>
 
 
-- Explain the fields of "git ls-files -s" output?
+> Q. Explain the fields of "git ls-files -s" output?
 <details><summary>Ans.</summary>
 <p>
 
@@ -171,7 +173,7 @@ file1.txt - c4 is the file name in staging area.
 </p>
 </details>
 
-- What hashing function git uses to generate column2 (c2) above?
+> Q. What hashing function git uses to generate column2 (c2) above?
 <details><summary>Ans.</summary>
 <p>
 
@@ -182,7 +184,7 @@ SHA1. It is a 40 characters long hexadecimal string
 </details>
 
 
-- Can the hsahing string be more than 40 characters?
+> Q. Can the hsahing string be more than 40 characters?
 <details><summary>Ans.</summary>
 <p>
 
@@ -194,9 +196,7 @@ the hashing string can't be greater or less than 40 characters.
 </p>
 </details>
 
-
-
-- What is this hash generated from?
+> Q. What is this hash generated from?
 <details><summary>Ans.</summary>
 <p>
 
@@ -210,7 +210,7 @@ The hash is generated using 4 elements:
 </p>
 </details>
 
-- Can two files have same hash?
+> Q. Can two files have same hash?
 <details><summary>Ans.</summary>
 <p>
 
@@ -220,7 +220,7 @@ Yes, if the object type, size and content of two files is same then their hash w
 </p>
 </details>
 
-- How can I check what is the object type, size and content as stated in above question, which is being used to generate the hash?
+> Q. How can I check what is the object type, size and content as stated in above question, which is being used to generate the hash?
 <details><summary>Ans.</summary>
 <p>
 
@@ -239,7 +239,7 @@ $ git cat-file -t e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
 </details>
 
 
-- How many object types exist in git?
+> Q. How many object types exist in git?
 <details><summary>Ans.</summary>
 <p>
 
@@ -253,7 +253,7 @@ There are four types of object:
 </p>
 </details>
 
-- My files have already been added to staging area, did something change in .git directory at this point?
+> Q. My files have already been added to staging area, did something change in .git directory at this point?
 I havent committed any files only did "git add file1.txt file2.txt".
 <details><summary>Ans.</summary>
 <p>
@@ -273,7 +273,7 @@ Since both files had same hash, hence only one file exists.
 </p>
 </details>
 
-- If only two hexadecimal characters from file hash are being used to create a directory under .git/objects/ folder,
+> Q. If only two hexadecimal characters from file hash are being used to create a directory under .git/objects/ folder,
 then how many unique folders can be created in .git/objects directory?
 Remember that files havent been committed as yet only "git add file1.txt file2.txt" was done.
 <details><summary>Ans.</summary>
@@ -303,7 +303,7 @@ Since both files had same hash, hence only one file exists.
 </details>
 
 
-- If only two hexadecimal characters from file hash are being used to create a directory under .git/objects/ folder,
+> Q. If only two hexadecimal characters from file hash are being used to create a directory under .git/objects/ folder,
 then how many unique file hashes can be created in a single .git/objects/<aGivenDirectory> ?
 <details><summary>Ans.</summary>
 <p>
@@ -319,7 +319,7 @@ was how long a sha1 hash was.
 </p>
 </details>
 
-- How many total files can sha1 sha1 hash represent??
+> Q. How many total files can sha1 sha1 hash represent??
 <details><summary>Ans.</summary>
 <p>
 
