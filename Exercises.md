@@ -1,6 +1,4 @@
-- 
-
-1) Create a new git repository on local computer
+- Create a new git repository on local computer
 
 <details><summary>Answer</summary>
 <p>
