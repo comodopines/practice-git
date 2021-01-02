@@ -2,6 +2,7 @@
 
 <details><summary>Answer</summary>
 <p>
+  
 ```
 mkdir myDir
 cd myDir
