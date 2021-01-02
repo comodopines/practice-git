@@ -13,8 +13,25 @@ $ git version
 <p>
 
 ```
+$ mkdir -p /apps/myDir
+$ cd /apps/myDir
+$ git init
+```
+</p>
+</details>
+
+
+- What is a working directory?
+<details><summary>Ans.</summary>
+<p>
+
+```
+It is the directory from where "git init" was run.
+If "git init" was run from within "/apps/myDir" then "/apps/myDir/" is working directory.
+$ pwd
+/apps/
 $ mkdir myDir
-$ cd myDir
+$ cd /apps/myDir
 $ git init
 ```
 </p>
@@ -26,20 +43,22 @@ $ git init
 <p>
 
 ```
-git init creates a .git folder in the folder from where the command was run. 
-It creates the folder structure which it needs to track the various objects being checked in using git.
+git init creates a .git folder in the folder from where the "git init" command was run.
+If "git init" was run from "/apps/myDir" then you will see "/apps/myDir/.git" folder after running init.
+.git is the folder which git uses to track the various objects within a working directory (/apps/myDir/).
 ```
 </p>
 </details>
 
 
-- Between a file creation and commiting the file which all areas does the file go into?
+- What is Working directory, staging area and git repository?
 <details><summary>Ans.</summary>
 <p>
 
 ```
-1) Working Directory - This is where you ran git init command in and where you create the files. Exa. touch <fileName>
-2) Staging Area - This is where file gets added using add command. Exa. git add <filename>
+Between a file creation and commiting using git, below are the "areas" where a file exists in it lifecycle till it gets commited:
+1) Working Directory - This is where you ran git init command in (has .git folder) and where you create the files/folders.  
+2) Staging Area - This is where file gets tracked for commit using add command. Exa. git add <filename> adds file to staging area.
 3) Git Repository - This is where file gets addded once an added file gets committed. Exa. git commit -m "Message"
 ```
 </p>
@@ -131,6 +150,185 @@ $ git ls-files -s
 ###Should have content something similar to below
 100644 e69de29bb2d1d6434b8b29ae775ad8c2e48c5391 0       file1.txt
 100644 e69de29bb2d1d6434b8b29ae775ad8c2e48c5391 0       file2.txt
+```
+</p>
+</details>
+
+
+- Explain the fields of "git ls-files -s" output?
+<details><summary>Ans.</summary>
+<p>
+
+```
+c1     c2                                       c3      c4
+100644 e69de29bb2d1d6434b8b29ae775ad8c2e48c5391 0       file1.txt
+
+100644 - c1 defines type of file and its permission (100 being regular file 644 being it permission out of 777)
+e69de2... - c2 this is the hash of the file1.txt
+0 - c3 denotes how many versions of files exist in the repo. 0 denotes 0th version (only one version)
+file1.txt - c4 is the file name in staging area.
+```
+</p>
+</details>
+
+- What hashing function git uses to generate column2 (c2) above?
+<details><summary>Ans.</summary>
+<p>
+
+```
+SHA1. It is a 40 characters long hexadecimal string
+```
+</p>
+</details>
+
+
+- Can the hsahing string be more than 40 characters?
+<details><summary>Ans.</summary>
+<p>
+
+```
+No. Since SHA1 is 160 bits long and each character in sha string is a hexadecimal representation (4 bits), hence
+the hashing string can't be greater or less than 40 characters.
+160 bits hash / 4bits to represent one hexadecimal character = 40 hexadecimal characters.
+```
+</p>
+</details>
+
+
+
+- What is this hash generated from?
+<details><summary>Ans.</summary>
+<p>
+
+```
+The hash is generated using 4 elements:
+- type of object being staged/tracked.
+- size of object
+- padding null character '\0'
+- file content.
+```
+</p>
+</details>
+
+- Can two files have same hash?
+<details><summary>Ans.</summary>
+<p>
+
+```
+Yes, if the object type, size and content of two files is same then their hash will be equal.
+```
+</p>
+</details>
+
+- How can I check what is the object type, size and content as stated in above question, which is being used to generate the hash?
+<details><summary>Ans.</summary>
+<p>
+
+```
+Using "git cat-file" with the hash of the file we can get the info:
+1) Content used for hash:
+$ git cat-file -p e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+
+2) Size of the file:
+$ git cat-file -s e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+
+3) Object type of the file:
+$ git cat-file -t e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+```
+</p>
+</details>
+
+
+- How many object types exist in git?
+<details><summary>Ans.</summary>
+<p>
+
+```
+There are four types of object:
+1) blob - is used to store file data- it is generally a file.
+2) commit - holds metadata for each change introduced in the repos. It includes author, committer, commit-data, and log- messages.
+3) tree - this is to reference a directory structure. It holds reference hash to files within it.
+4) tag - arbitrary human-readable name to a specific object usually a commit.
+```
+</p>
+</details>
+
+- My files have already been added to staging area, did something change in .git directory at this point?
+I havent committed any files only did "git add file1.txt file2.txt".
+<details><summary>Ans.</summary>
+<p>
+
+```
+Once "git add" has been run, we saw the hash of the file objects has been created when we ran "git ls-files -s" to check staging area.
+For every hash (therefore object) a directory/file gets created in .git/ folder. 
+The naming convention of the file is as follows (keeping our file hash e69de29bb2d1d6434b8b29ae775ad8c2e48c5391 in mind):
+
+$ workingDirectory/.git/<firstTwoHashCharacters/<Last38HasCharactersFileName>
+
+In our example by adding file to staging area git created below directory and file as our file hash was e69de29bb2d1d6434b8b29ae775ad8c2e48c5391:
+/apps/myDir/.git/objects/e6/9de29bb2d1d6434b8b29ae775ad8c2e48c5391
+
+Since both files had same hash, hence only one file exists.
+```
+</p>
+</details>
+
+- If only two hexadecimal characters from file hash are being used to create a directory under .git/objects/ folder,
+then how many unique folders can be created in .git/objects directory?
+Remember that files havent been committed as yet only "git add file1.txt file2.txt" was done.
+<details><summary>Ans.</summary>
+<p>
+
+```
+Let's say you have one bit to work with "X", then you have only two options 0 or 1 to put in X, hence only two possible folderNames
+can be created using one bit, either folder 0 or folder 1.
+However if you had 2 bits "XY", then now you can create 4 folder names, essentially, 00, 01, 10 and 11.
+If you had 3 bits "XYZ", then you can create 8 folder names, essentially, 000, 001, 010, 011, 100, 101, 110, 111.
+
+So in essence if we had N number of bits to work with (in our above cases X had N as one, XY had N as 2, XYZ had N as 3) 
+and if each of these bits had two options (say M where M which was either 0 or 1 in case of a bit) 
+then one could create (number of options a bit represents) to the power (how many bits we had to work with) folder names.
+In above examples M**N (or M exponent N) gave us 2 exp 1=2, 2 exp 2=4, 2 exp 3=8 and so on where M was 2(0 and 1) and N(1,2,3)...
+
+In case of git it chooses first two hexadecimal characters as folder name, and remember we mentioned that each hexadecimal character is 4 bits.
+So in total git can use 4+4 = 8 bits to represent each folder. Hence total folders will be 2 exp N = 2 exp 8 = 256 folders.
+$ workingDirectory/.git/<firstTwoHashCharacters/<Last38HasCharactersFileName>
+
+In our example by adding file to staging area git created below directory and file as our file hash was e69de29bb2d1d6434b8b29ae775ad8c2e48c5391:
+/apps/myDir/.git/objects/e6/9de29bb2d1d6434b8b29ae775ad8c2e48c5391
+
+Since both files had same hash, hence only one file exists.
+```
+</p>
+</details>
+
+
+- If only two hexadecimal characters from file hash are being used to create a directory under .git/objects/ folder,
+then how many unique file hashes can be created in a single .git/objects/<aGivenDirectory> ?
+<details><summary>Ans.</summary>
+<p>
+
+```
+By above logic when two char were used for folder names we had 2 exp (2 char * 4bits per char) = 2 exp 8 = 256 folders.
+Thus number of unique files per folder will be 2 exp (38 char * 4 bits) = 2 exp 152
+
+Similary a total of 256 folders * (2 exp 152) unique files can be represented.
+Not surpisingly this is actually 2 exp 160 (as 256 = 2 exp 8 and 2 exp 8 * 2 exp 152 = 2 exp 160) where 160 bits
+was how long a sha1 hash was.
+```
+</p>
+</details>
+
+- How many total files can sha1 sha1 hash represent??
+<details><summary>Ans.</summary>
+<p>
+
+```
+Since there are 256 (2 exp 8) unique folders that can be represented in git/objects/ folder.
+And each folder can have 2 exp 152 unique files i.e. 2 exp (38 char * 4 bits) = 2 exp 152
+
+Hence total unique files which can be represented are (2 exp 8 folders) * (2 exp 152). 
+Not surpisingly this is actually 2 exp 160 where sha1 hash length was 160 bits.
 ```
 </p>
 </details>
