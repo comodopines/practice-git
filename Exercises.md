@@ -3,8 +3,9 @@
 <details><summary>Answer</summary>
 <p>
 #### yes, even hidden code blocks!
-```bash
-mkdir <your Direcotry Name>
+```
+bash
+echo "mkdir <your Direcotry Name>"
 cd <your Direcotry Name>
 git init
 ```
