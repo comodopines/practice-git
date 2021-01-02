@@ -2,7 +2,7 @@
 
 <details><summary>Answer</summary>
 <p>
-```python
+```bash
 mkdir <your Direcotry Name>
 cd <your Direcotry Name>
 git init
