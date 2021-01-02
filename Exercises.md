@@ -16,9 +16,9 @@ $ git init
 <p>
 
 ```
-1) Working Directory - This is where file gets created.
-2) Staging Area - This is where file gets added on doing git add <filename>
-3) Git Repository - This is where file gets addded once doing a git commit
+1) Working Directory - This is where file gets created. Exa. touch <fileName>
+2) Staging Area - This is where file gets added using add command. Exa. git add <filename>
+3) Git Repository - This is where file gets addded once committed. Exa. git commit -m "Message"
 ```
 </p>
 </details>
