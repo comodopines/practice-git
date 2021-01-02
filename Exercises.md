@@ -26,7 +26,8 @@ $ git init
 <p>
 
 ```
-git init creates a .git folder in the folder from where the command was run. It creates the folder structure which it needs to track the various objects being checked in using git.
+git init creates a .git folder in the folder from where the command was run. 
+It creates the folder structure which it needs to track the various objects being checked in using git.
 ```
 </p>
 </details>
@@ -56,67 +57,78 @@ $ git add file1.txt
 </p>
 </details>
 
-- What does it mean if we say a file is untracked?
+- What does it mean if we say a file is untracked versus tracked?
 <details><summary>Ans.</summary>
 <p>
 
 ```
-It means that file exists in working directory but it is not part of the staging area. You can check if a file is untracked by doing git status.
+Untracked files - Files which have been created by user but not added to staging area using "git add".
+Untracked files are shown in red in "git status" output.
+
+Tracked files - Files which have been addded to staging area but haven't been committed as yet. 
+Onlu "git add" has been performed on these files. "git commit" hasn't been initiated as yet.
+Tracked files are shown in green in "git status" output.
+
 ```
 </p>
 </details>
 
 
-- How to check if file1.txt exists in staging area?
+- How to check if file1.txt exists in staging area i.e. is tracked file?
 <details><summary>Ans.</summary>
 <p>
 
 ```
-#this will show all the files which are currently untracked and the files which are to be committed. Files to be committed are the ones in staging area.
-$ git status 
+$ git status
+$ git ls-files -s
 
-#this will check what files are present in staging area 
-$ git ls-files -s 
+"git status" will show file1.txt in green meaning it is currently tracked (not committed).
+"git ls-files -s" can be a test to see if a file is tracked, but what if it is already committed? 
 
-#Perform below steps to see it in action
-#create directory
+###Perform below steps to see it in action
+###create directory using "mkdir"
+###move to directory using "cd"
+
 $ mkdir test 
-#move to directory
 $ cd test 
-#initialize repo
+
+###initialize repo using "git init"
+###create a blank file in test directory using "touch"
 $ git init 
-#create a blank file in test directory
 $ touch file1.txt 
-#check what files exist in working directory and untracked. Should show file1.txt in red and untracked
+
+###check what files exist in working directory and are untracked using "git status". file1.txt should be in red(untracked).
 $ git status 
-#check which files are in staging area. Should return blank as the file1.txt is only in working directory and not in staging area
+
+###check which files are in staging area using "git ls-files -s". Should return nothing. 
 $ git ls-files -s 
-#create another blank file file2.txt in test directory
+
+###create another blank file file2.txt in test directory.
+###check what files exist in working directory and are untracked. file1.txt and file2.txt should be in red(untracked).
 $ touch file2.txt 
-#check what files exist in working directory and are untracked. Should show file1.txt and file2.txt in red and untracked
 $ git status 
-#add file1.txt to staging area
+
+###add file1.txt to staging area using "git add"
+###"git status" should now show file1.txt in green (tracked) and file2.txt in red (untracked)
 $ git add file1.txt 
-
-#Check file1.txt should be in green meaning it is in staging area and file2.txt in red meaning untracked - in working directory and not in staging area
 $ git status 
 
-#Below command should show file1.txt but not file2.txt
+###Below command should show file1.txt but not file2.txt
 $ git ls-files -s 
 
-#Should have content something similar to below
+###Should have content something similar to below
 100644 e69de29bb2d1d6434b8b29ae775ad8c2e48c5391 0       file1.txt
 
-#add file2.txt to staging area
+###add file2.txt to staging area
 $ git add file2.txt 
 
-#Check file1.txt and file2.txt should be in green meaning it is in staging area.
+###Check file1.txt and file2.txt should be in green meaning it is in staging area.
 $ git status 
 
-#Below command should show file1.txt and file2.txt
+###Below command should show file1.txt and file2.txt
 $ git ls-files -s 
 
-#Should have content something similar to below
+###Should have content something similar to below
 100644 e69de29bb2d1d6434b8b29ae775ad8c2e48c5391 0       file1.txt
 100644 e69de29bb2d1d6434b8b29ae775ad8c2e48c5391 0       file2.txt
 ```
