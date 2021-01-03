@@ -481,3 +481,17 @@ $ cat .git/HEAD | awk -F"heads\/" '{print $2}'
 </p>
 </details>
 --------
+
+> Q. How to check what is the name of your remote branch/repo?
+<details><summary>Ans.</summary>
+<p>
+
+```bash
+$ git remote
+
+OR
+$ git remote -v
+```
+</p>
+</details>
+--------
