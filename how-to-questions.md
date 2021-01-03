@@ -289,9 +289,79 @@ file being removed from not just the repo but also the staged area.
 File will be unstaged. In previous question since 
 we hadn't made any changes that were "git add(ed)" hence it didn't matter.
 
-#git rm <file> --cache
-$ git rm file3.txt --cache
+#git rm <file> 
+$ git rm file3.txt
 
+```
+</p>
+</details>
+
+> Q. How to recover a file which you just "rm(ed)" causing it to go away from local?
+If the file was already added to staging area how will you recover the staged version?
+<details><summary>Ans.</summary>
+<p>
+
+```bash
+Since rm will remove file from local only, you can checkout the file back from repo.
+Since staging area already has a version it will be that version which git checkout returns.
+
+#Checkout the previous version
+$ git checkout -- file3.txt
+```
+</p>
+</details>
+
+
+> Q. How to recover a file which you just "rm(ed)" causing it to go away from local?
+You didn't stage your changes, then which version will be returned and how?
+<details><summary>Ans.</summary>
+<p>
+
+```bash
+Since rm will remove file from local only, you can checkout the file back.
+Since you didnt stage your latest changes hence checkout will return last committed version.
+
+#Checkout the previous version
+$ git checkout -- file3.txt
+```
+</p>
+</details>
+
+> Q. How to recover a file which you just "git rm(ed)" causing it to go away from everywhere?
+<details><summary>Ans.</summary>
+<p>
+
+```bash
+Since git rm will remove file from staging, index, repo and local hence only way we can
+bring it back by going back to a previous commit version of it. git revert will not work
+as the file has been removed from repo, staging etc. The onyl course of action is to reset the head
+to a previous version.
+
+
+#Head reset the file, essentailly delete the last commit and point the HEAD to previous commit
+$ git reset HEAD file3.txt
+
+#Then checkout the previous version
+$ git checkout -- file3.txt
+```
+</p>
+</details>
+
+> Q. How to recover a file's older version if you just "committed" a newer version by mistake?
+<details><summary>Ans.</summary>
+<p>
+
+```bash
+Since new version is already committed, hence checkout will checkout the recent version.
+Also resetting the head will not work as file is already committed.
+Best option is to revert the last commit using git revert.
+
+
+#Head reset the file, essentailly delete the last commit and point the HEAD to previous commit
+$ git revert --no-edit HEAD
+
+#File is already checkdout at older version right now.
+#Git added a commit message automatically in git log mentioning the rever that it was performing
 ```
 </p>
 </details>
