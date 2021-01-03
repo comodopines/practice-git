@@ -312,55 +312,81 @@ Remember that files havent been committed as yet only "git add file1.txt file2.t
 <p>
 
 ```
-Let's say you have one bit to work with "X", then you have only two options 0 or 1 to put in X, hence only two possible folderNames
-can be created using one bit, either folder 0 or folder 1.
-However if you had 2 bits "XY", then now you can create 4 folder names, essentially, 00, 01, 10 and 11.
-If you had 3 bits "XYZ", then you can create 8 folder names, essentially, 000, 001, 010, 011, 100, 101, 110, 111.
+Bit of bit theory first:
 
-So in essence if we had N number of bits to work with (in our above cases X had N as one, XY had N as 2, XYZ had N as 3) 
-and if each of these bits had two options (say M where M which was either 0 or 1 in case of a bit) 
-then one could create (number of options a bit represents) to the power (how many bits we had to work with) folder names.
-In above examples M**N (or M exponent N) gave us 2 exp 1=2, 2 exp 2=4, 2 exp 3=8 and so on where M was 2(0 and 1) and N(1,2,3)...
+Let's say you have one bit "X" to represent folder name, 
+then you have only two options, either 0 or 1, which can be stored in "X". 
+Hence only two folderNames are possible with a single bit "X".
+i.e folderName 0 and folderName 1.
 
-In case of git it chooses first two hexadecimal characters as folder name, and remember we mentioned that each hexadecimal character is 4 bits.
-So in total git can use 4+4 = 8 bits to represent each folder. Hence total folders will be 2 exp N = 2 exp 8 = 256 folders.
+If you had 2 bits "XY" to represent folder name, 
+now you can assign four folder names i.e. 00, 01, 10 and 11.
+
+3 bits "XYZ", can assign eight folder names. 
+i.e. 000, 001, 010, 011, 100, 101, 110, 111.
+
+So having a total of N placeholders ( length("XYZ....") = N) 
+where each one of these N placeholders can carry one out of M values
+( M=2 in case of bit i.e. 0 or 1), will
+make (M exponent N) naming values.
+
+In above examples of "X", "XY" and "XYZ" we got
+2 exp 1= 2 for "X" where M=2 (either 0 or 1) and N=1 length of "X"
+2 exp 2= 4 for "XY" where M=2 (either 0 or 1) and N=3 length of "XY"
+2 exp 3= 8 for "XYZ"... and so on 
+
+With that under belt we know in case of git, it chooses first two hexadecimal
+characters as folder name. Since each hexadecimal character is 4 bits long,
+so in total git can use 4+4 = 8 bits to represent each folder. 
+
+Hence total folders will be 2 exp N = 2 exp 8 = 256 folders.
 $ workingDirectory/.git/<firstTwoHashCharacters/<Last38HasCharactersFileName>
 
-In our example by adding file to staging area git created below directory and file as our file hash was e69de29bb2d1d6434b8b29ae775ad8c2e48c5391:
+In our example by adding file to staging area git 
+created below directory and put a single file in it. 
+Since the hash for our file was e69de29bb2d1d6434b8b29ae775ad8c2e48c5391, 
+hence filename was created as:
 /apps/myDir/.git/objects/e6/9de29bb2d1d6434b8b29ae775ad8c2e48c5391
 
-Since both files had same hash, hence only one file exists.
+where "e6" is folder and remaining 38 were used as filename.
 ```
 </p>
 </details>
 
 
-> Q. If only two hexadecimal characters from file hash are being used to create a directory under .git/objects/ folder,
-then how many unique file hashes can be created in a single .git/objects/<aGivenDirectory> ?
+> Q. If only two hexadecimal characters from file hash 
+are being used to create a directory under .git/objects/ folder, then :
+  a) How many unique file hashes can be created in a single .git/objects/<aGivenDirectory>?
+  b) How many unique files can be in each of the above unique folders?
+  c) How many total unique files can sha1 hash represent?
 <details><summary>Ans.</summary>
 <p>
 
 ```
-By above logic when two char were used for folder names we had 2 exp (2 char * 4bits per char) = 2 exp 8 = 256 folders.
-Thus number of unique files per folder will be 2 exp (38 char * 4 bits) = 2 exp 152
+If two char are used for folder name from the file hash
+hence we have 
+M = 2 (either 0 or 1)
+N = 2 char * 4 bits per hex char
 
-Similary a total of 256 folders * (2 exp 152) unique files can be represented.
-Not surpisingly this is actually 2 exp 160 (as 256 = 2 exp 8 and 2 exp 8 * 2 exp 152 = 2 exp 160) where 160 bits
+Hence, a total of 2 exp 8 = 256 folders.
+
+
+Number of unique files per folder will be:
+M = 2
+N = 38 char * 4 bits per hex char
+
+Hence a toal of 2 exp 152 unique files per folder.
+
+Total number of unique folder/file combination will then be:
+Total unique folders * Total unique files per folder
+= (256) * (2 exp 152) ...... (xx)
+
+
+Not surpisingly this is actually 2 exp 160 where 160 bits
 was how long a sha1 hash was.
-```
-</p>
-</details>
 
-> Q. How many total files can sha1 sha1 hash represent??
-<details><summary>Ans.</summary>
-<p>
-
-```
-Since there are 256 (2 exp 8) unique folders that can be represented in git/objects/ folder.
-And each folder can have 2 exp 152 unique files i.e. 2 exp (38 char * 4 bits) = 2 exp 152
-
-Hence total unique files which can be represented are (2 exp 8 folders) * (2 exp 152). 
-Not surpisingly this is actually 2 exp 160 where sha1 hash length was 160 bits.
+Since 256 = 2 exp 8
+hence (xx) above becomes (2 exp 8) * (2 exp 152) = 2 exp (8+152) = 2 exp 160
 ```
 </p>
 </details>
