@@ -8,7 +8,7 @@ $ git --version
 ```
 </p>
 </details>
-
+----------------------------------------------------------------
 
 > Q. How to check help menu for a git command?
 <details><summary>Ans.</summary>
