@@ -364,3 +364,12 @@ cd ${WORKDIR}
 </p>
 </details>
 
+> Q. What is a branch in git?
+<details><summary>Ans.</summary>
+<p>
+
+```bash
+Branch is chain of commits which offshoot from the main development branch. 
+```
+</p>
+</details>
