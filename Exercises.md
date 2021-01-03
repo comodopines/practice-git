@@ -56,7 +56,7 @@ various objects within a working directory (/apps/myDir/ in our case).
 </details>
 
 
-> Q. Are working directory, staging area and git repository same or different?
+> Q. Are working directory, staging area and git repository same?
 <details><summary>Ans.</summary>
 <p>
 
@@ -92,7 +92,7 @@ $ git add file1.txt
 </p>
 </details>
 
-> Q. What does it mean if we say a file is untracked versus tracked?
+> Q. What is an untracked versus a tracked file?
 <details><summary>Ans.</summary>
 <p>
 
