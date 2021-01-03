@@ -482,7 +482,8 @@ $ cat .git/HEAD | awk -F"heads\/" '{print $2}'
 </details>
 --------
 
-> Q. How to check what is the name of your remote branch/repo?
+> Q. How to check what is the name of your remote branch/repo
+to which your current branch is set to push or fetch from?
 <details><summary>Ans.</summary>
 <p>
 
