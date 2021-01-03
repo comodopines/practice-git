@@ -25,13 +25,34 @@ $ git commit help
 > Q. How to create a new git repository on local system?
 <details><summary>Ans.</summary>
 <p>
-
+  
 ```
 #Create a directory, move into it and run "git init"
+# It creates both repo (.git) and working directory
 $ mkdir -p /apps/myDir
 $ cd /apps/myDir
 $ git init
 ```
+
+</p>
+</details>
+--------
+
+> Q. How to create a new git repository on local system without working directory?
+<details><summary>Ans.</summary>
+<p>
+
+```
+#Create a directory, move into it and run "git init --bare"
+# -bare flag makes only the repo and not a working directory
+#This type is used as a remote repo where people can push code to
+#
+$ mkdir -p /apps/myDir
+$ cd /apps/myDir
+$ git init --bare
+```
+
+<a href="https://stackoverflow.com/a/22699743/14885821">Details here</a>
 </p>
 </details>
 --------
