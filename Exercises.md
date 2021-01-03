@@ -56,23 +56,24 @@ various objects within a working directory (/apps/myDir/ in our case).
 </details>
 
 
-> Q. What is Working directory, staging area and git repository?
+> Q. Are working directory, staging area and git repository same or different?
 <details><summary>Ans.</summary>
 <p>
 
 ```
-Between a file creation and commiting it in git repo,
-below are the "areas" where a file exists in it lifecycle:
+Different. Between a file creation and until its committed it in git repo,
+it is present in either one or more of these directories:
+
 1) Working Directory:
-This is where you ran git init command in (has .git folder)
-and where you create the files/folders.  
+This is where you ran git init command (has .git folder)
+This is where you create the files/folders. Basically your code folder.
 
 2) Staging Area:
-This is where file gets tracked for commit using add command.
+This is where file gets added by using add command.
 Exa. git add <filename> adds file to staging area.
 
 3) Git Repository:
-This is where file gets addded once an added file gets committed.
+This is where file gets addded once an added file gets committed using commit command.
 Exa. git commit -m "Message"
 ```
 </p>
@@ -122,9 +123,6 @@ $ git ls-files -s
 
 "git status" will show currently tracked (not committed) 
 files (file1.txt) in green.
-
-"git ls-files -s" output can give can be a test to see 
-if a file is tracked, but what if it is already committed? 
 
 ###Perform below steps to see it in action
 ###create directory using "mkdir"
@@ -209,25 +207,26 @@ Below are explanation of c1, c2, c3 and c4:
 <p>
 
 ```
-SHA1. It is a 40 characters long hexadecimal string
+SHA1. Its output is a 40 characters long hexadecimal string
 ```
 </p>
 </details>
 
 
-> Q. Can the hsahing string be more than 40 characters?
+> Q. Can the sha1 hash string output be more than 40 characters?
 <details><summary>Ans.</summary>
 <p>
 
 ```
-No. Since SHA1 is 160 bits long and each character in sha string is a hexadecimal representation (4 bits), hence
+No. Since SHA1 generates 160 bits long hash and each character 
+in hash string is a hexadecimal char (4 bits), hence
 the hashing string can't be greater or less than 40 characters.
-160 bits hash / 4bits to represent one hexadecimal character = 40 hexadecimal characters.
+160 bits hash output / 4 bits to represent one hexadecimal character = 40 hexadecimal characters.
 ```
 </p>
 </details>
 
-> Q. What is this hash generated from?
+> Q. What is this input to sha1 hash function to generate these hashes?
 <details><summary>Ans.</summary>
 <p>
 
@@ -251,12 +250,13 @@ Yes, if the object type, size and content of two files is same then their hash w
 </p>
 </details>
 
-> Q. How can I check what is the object type, size and content as stated in above question, which is being used to generate the hash?
+> Q. How can I check what is the object type, size and content 
+which is being used to generate the hash?
 <details><summary>Ans.</summary>
 <p>
 
 ```
-Using "git cat-file" with the hash of the file we can get the info:
+Using "git cat-file" and the hash of the file we can get below (and other) info:
 1) Content used for hash:
 $ git cat-file -p e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
 
@@ -277,8 +277,9 @@ $ git cat-file -t e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
 ```
 There are four types of object:
 1) blob - is used to store file data- it is generally a file.
-2) commit - holds metadata for each change introduced in the repos. It includes author, committer, commit-data, and log- messages.
-3) tree - this is to reference a directory structure. It holds reference hash to files within it.
+2) commit - holds metadata for each change introduced in the repos. 
+            It includes author, committer, commit-data, and log- messages.
+3) tree - this is to reference filenames for the object types (files) and their hashes.
 4) tag - arbitrary human-readable name to a specific object usually a commit.
 ```
 </p>
