@@ -4,13 +4,24 @@
 
 ```
 $ git version
+$ git --version
 ```
 </p>
 </details>
 
 
+> Q. How to check help menu for a git command?
+<details><summary>Ans.</summary>
+<p>
 
-> Q. How to create a new git repository on local computer?
+```
+$ git <command> help
+$ git commit help
+```
+</p>
+</details>
+
+> Q. How to create a new git repository on local system?
 <details><summary>Ans.</summary>
 <p>
 
