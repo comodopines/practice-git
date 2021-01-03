@@ -181,9 +181,16 @@ $ git config --list | grep user
 <p>
 
 ```bash
-#Using "git config" command
+#Using "git config" command you can set it globally
 $ git config --global user.email "you@example.com"
 $ git config --global user.name "your name"
+
+OR for a particular folder locally without the flag
+
+$ git config user.email "you@local.com"
+$ git config user.name "local name"
+
+
 ```
 </p>
 </details>
