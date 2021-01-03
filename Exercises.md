@@ -378,3 +378,61 @@ $ git config --list | grep user
 </details>
 
 
+> Q. How do I set the user name and email on my system?
+<details><summary>Ans.</summary>
+<p>
+
+```bash
+#Using "git config" command
+$ git config --global user.email "you@example.com"
+$ git config --global user.name "your name"
+```
+</p>
+</details>
+
+
+> Q. Once user and email is set what does "git commit" command achieve?
+<details><summary>Ans.</summary>
+<p>
+
+```
+"git commit" achieves following:
+1) Save the files from staging area to the git repository (or database if you want to call it).
+2) Creates a additional hash objects:
+ - Commit object: Has details like which author name and email, committer name,
+   parent hash (previous commit to current commit) and email and tree object for this commit. 
+ - Tree object: contains the reference of all the files and their types
+   which were committed as part of this commit.
+
+# Commit object content
+$git cat-file -p <hash of commit object>
+tree 05ca2475d3c2f22ff8835bb202c56b174603c5ff
+author Your Name <you@example.com> 1609628181 +0000
+committer Your Name <you@example.com> 1609628181 +0000
+
+#Tree object content
+$git cat-file -p <hash of tree object for above commit object first line>
+100644 blob e69de29bb2d1d6434b8b29ae775ad8c2e48c5391    file1.txt
+100644 blob e69de29bb2d1d6434b8b29ae775ad8c2e48c5391    file2.txt
+```
+</p>
+</details>
+
+> Q. Ok, so if file content is saved as blob object, commit is saved as commit object
+then why do we need the tree object?
+<details><summary>Ans.</summary>
+<p>
+
+```
+A blob object is built using file content and 
+some other "things" hashed together (object type [blob], size and null).
+Tree object is a way to connect hash string to its filename, type and permissions.
+
+#You can use below snippet to find each type of object 
+which gets created after a commit.
+$ WORKDIR=$(pwd); OBJDIR=$WORKDIR/.git/objects/; cd ${OBJDIR};clear;echo;echo;echo "|-> Obj Dir : "${OBJDIR}; find . -type f | while read fileName; do HASH=`echo ${fileName}|sed "s/\.//g" | sed "s/\///g"` ;echo "|  |--> File Name: "${fileName}; echo "|  |   |--> File Hash : "${HASH}; echo "|  |   |--> File Type : "`git cat-file -t ${HASH}`;echo "|  |   |--> File Size : "`git cat-file -s ${HASH}` ; echo "|  |   |--> File Data : ";git cat-file -p ${HASH}| while read line; do echo "|  |     "${line};done; echo "|  | "; echo "|  | ";done; cd ${WORKDIR}
+
+```
+</p>
+</details>
+
