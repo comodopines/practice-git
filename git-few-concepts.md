@@ -382,3 +382,36 @@ Branch is chain of commits which offshoot from the main development branch.
 </p>
 </details>
 ------
+
+> Q. What is difference between fetch and pull in git?
+<details><summary>Ans.</summary>
+<p>
+
+```bash
+Fetch - Fetches the contents from remote origin but doesn't merge the changes.
+Pull - It attempts to fetch and then merge it.
+```
+</p>
+</details>
+------
+
+> Q. How many types of merge are there?
+<details><summary>Ans.</summary>
+<p>
+
+```bash
+1) Fast Forward Merge - Where the remote branch has moved ahead in commits but the branch being merged into hasn't.
+Essentially all that is needed is to move the head pointer of the current branch to the last commit of branch being
+merged from.
+
+2) Three Way Merge - This is where both main branch (the branch into which we are merging)
+   and branch being merged from (lets call it feature branch) have been moved ahead in commits.
+   In this case there are three main commits to take care of:
+     a) The commit until when both main and feature branch were in sync.
+     b) The last commit of main banch, as it has moved ahead from common point.
+     c) The last commit of the fetaure branch, as it has moved ahead from common point.
+```
+</p>
+</details>
+------
+
