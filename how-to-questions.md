@@ -411,3 +411,25 @@ $ git checkout -b feature-1
 </p>
 </details>
 
+> Q. How to list all the branches available?
+<details><summary>Ans.</summary>
+<p>
+
+```bash
+$ git branch
+```
+</p>
+</details>
+
+> Q. How to know your current branch you are in?
+<details><summary>Ans.</summary>
+<p>
+
+```bash
+$ git rev-parse --abbrev-ref HEAD
+
+OR
+$ cat .git/HEAD | awk -F"heads\/" '{print $2}'
+```
+</p>
+</details>
