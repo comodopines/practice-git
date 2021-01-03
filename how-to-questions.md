@@ -384,3 +384,30 @@ $ git rm file3.txt --cache
 ```
 </p>
 </details>
+
+> Q. How to create a branch?
+<details><summary>Ans.</summary>
+<p>
+
+```bash
+$ git branch <branchName>
+$ git branch feature-1
+```
+</p>
+</details>
+
+> Q. How to move to a branch?
+<details><summary>Ans.</summary>
+<p>
+
+```bash
+$ git checkout <branchName>
+$ git checkout feature-1
+
+You can create the branch and checkout at same time with -b flag
+$ git checkout -b feature-1
+
+```
+</p>
+</details>
+
