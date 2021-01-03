@@ -1,40 +1,3 @@
-> Q. How to check the version of git installed on your system?
-<details><summary>Ans.</summary>
-<p>
-
-```
-$ git version
-$ git --version
-```
-</p>
-</details>
-
-
-> Q. How to check help menu for a git command?
-<details><summary>Ans.</summary>
-<p>
-
-```
-$ git <command> help
-$ git commit help
-```
-</p>
-</details>
-
-> Q. How to create a new git repository on local system?
-<details><summary>Ans.</summary>
-<p>
-
-```
-#Create a directory, move into it and run "git init"
-$ mkdir -p /apps/myDir
-$ cd /apps/myDir
-$ git init
-```
-</p>
-</details>
-
-
 > Q. What is a working directory?
 <details><summary>Ans.</summary>
 <p>
@@ -91,18 +54,6 @@ Exa. git commit -m "Message"
 </details>
 
 
-> Q. How to create a new file file1.txt and add it to staging area?
-<details><summary>Ans.</summary>
-<p>
-
-```
-#Using "git add" command
-$ touch file1.txt
-$ git add file1.txt
-```
-</p>
-</details>
-
 > Q. What is an untracked versus a tracked file?
 <details><summary>Ans.</summary>
 <p>
@@ -122,76 +73,6 @@ Tracked files are shown in green in "git status" output.
 </p>
 </details>
 
-
-> Q. How to check if file1.txt exists in staging area i.e. is tracked file?
-<details><summary>Ans.</summary>
-<p>
-
-```
-#Using "git status" or "git ls-files -s"
-$ git status
-$ git ls-files -s
-
-"git status" will show currently tracked (not committed) 
-files (file1.txt) in green.
-
-###Perform below steps to see it in action
-###create directory using "mkdir"
-###move to directory using "cd"
-
-$ mkdir test 
-$ cd test 
-
-###initialize repo using "git init"
-###create a blank file in test directory using "touch"
-$ git init 
-$ touch file1.txt 
-
-###check what files exist in working directory and are untracked using "git status". 
-###file1.txt should be in red(untracked).
-$ git status 
-
-###check which files are in staging area using "git ls-files -s". 
-###Should return nothing. 
-$ git ls-files -s 
-
-###create another blank file file2.txt in test directory.
-###check what files exist in working directory and are untracked. 
-###file1.txt and file2.txt should be in red(untracked).
-$ touch file2.txt 
-$ git status 
-
-###add file1.txt to staging area using "git add"
-###"git status" should now show file1.txt in green (tracked) 
-###and file2.txt in red (untracked)
-$ git add file1.txt 
-$ git status 
-
-###Below command should show file1.txt but not file2.txt
-$ git ls-files -s 
-
-###Should have content something similar to below
-100644 e69de29bb2d1d6434b8b29ae775ad8c2e48c5391 0       file1.txt
-
-###add file2.txt to staging area
-$ git add file2.txt 
-
-###Check file1.txt and file2.txt should be in green font
-###representing them being in staging area.
-$ git status 
-
-###Below command should show file1.txt and file2.txt
-###This can only confirm if file is in staging area or not
-###Only a good test if files are being staged for the first time
-###As even after doing commit these files should be present here
-$ git ls-files -s 
-
-###Should have content something similar to below
-100644 e69de29bb2d1d6434b8b29ae775ad8c2e48c5391 0       file1.txt
-100644 e69de29bb2d1d6434b8b29ae775ad8c2e48c5391 0       file2.txt
-```
-</p>
-</details>
 
 
 > Q. Explain the fields of "git ls-files -s" output?
@@ -261,26 +142,6 @@ Yes, if the object type, size and content of two files is same then their hash w
 </p>
 </details>
 
-> Q. How can I check what is the object type, size and content 
-which is being used to generate the hash?
-<details><summary>Ans.</summary>
-<p>
-
-```
-Using "git cat-file" and the hash of the file we can get below (and other) info:
-1) Content used for hash:
-$ git cat-file -p e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
-
-2) Size of the file:
-$ git cat-file -s e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
-
-3) Object type of the file:
-$ git cat-file -t e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
-```
-</p>
-</details>
-
-
 > Q. How many object types exist in git?
 <details><summary>Ans.</summary>
 <p>
@@ -296,22 +157,24 @@ There are four types of object:
 </p>
 </details>
 
-> Q. My files have already been added to staging area, did something change in .git directory at this point?
+> Q. My files have already been added to staging area, 
+did something change in .git directory at this point?
 I havent committed any files only did "git add file1.txt file2.txt".
 <details><summary>Ans.</summary>
 <p>
 
 ```
-Once "git add" has been run, we saw the hash of the file objects has been created when we ran "git ls-files -s" to check staging area.
+Once "git add" has been run, hash of the file objects gets created which can be
+checkd using "git ls-files -s".
+
 For every hash (therefore object) a directory/file gets created in .git/ folder. 
-The naming convention of the file is as follows (keeping our file hash e69de29bb2d1d6434b8b29ae775ad8c2e48c5391 in mind):
+The naming convention of the file is as follows:
+
+For a hash e69de29bb2d1d6434b8b29ae775ad8c2e48c5391 following will be dir structure:
 
 $ workingDirectory/.git/<firstTwoHashCharacters/<Last38HasCharactersFileName>
 
-In our example by adding file to staging area git created below directory and file as our file hash was e69de29bb2d1d6434b8b29ae775ad8c2e48c5391:
-/apps/myDir/.git/objects/e6/9de29bb2d1d6434b8b29ae775ad8c2e48c5391
-
-Since both files had same hash, hence only one file exists.
+$ /apps/myDir/.git/objects/e6/9de29bb2d1d6434b8b29ae775ad8c2e48c5391
 ```
 </p>
 </details>
@@ -425,19 +288,6 @@ configured on my system?
 $ git config user.name
 $ git config user.email
 $ git config --list | grep user
-```
-</p>
-</details>
-
-
-> Q. How do I set the user name and email on my system?
-<details><summary>Ans.</summary>
-<p>
-
-```bash
-#Using "git config" command
-$ git config --global user.email "you@example.com"
-$ git config --global user.name "your name"
 ```
 </p>
 </details>
