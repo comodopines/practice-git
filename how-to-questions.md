@@ -15,8 +15,8 @@ $ git --version
 <p>
 
 ```
-$ git <command> help
-$ git commit help
+$ git help <command>
+$ git help commit
 ```
 </p>
 </details>
