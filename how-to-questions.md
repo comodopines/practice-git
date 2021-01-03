@@ -8,7 +8,7 @@ $ git --version
 ```
 </p>
 </details>
-----------------------------------------------------------------
+--------
 
 > Q. How to check help menu for a git command?
 <details><summary>Ans.</summary>
@@ -20,6 +20,7 @@ $ git commit help
 ```
 </p>
 </details>
+--------
 
 > Q. How to create a new git repository on local system?
 <details><summary>Ans.</summary>
@@ -33,6 +34,7 @@ $ git init
 ```
 </p>
 </details>
+--------
 
 > Q. How to add files to staging area?
 <details><summary>Ans.</summary>
@@ -45,6 +47,7 @@ $ git add file1.txt
 ```
 </p>
 </details>
+--------
 
 > Q. How to check if file exists in staging area i.e. is tracked file?
 <details><summary>Ans.</summary>
@@ -115,6 +118,7 @@ $ git ls-files -s
 ```
 </p>
 </details>
+--------
 
 > Q. How to check what is the object type, size and content 
 which is being used to generate the hash?
@@ -134,6 +138,7 @@ $ git cat-file -t e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
 ```
 </p>
 </details>
+--------
 
 > Q. How to check what is the current user.name and user.email
 configured on my system?
@@ -148,7 +153,7 @@ $ git config --list | grep user
 ```
 </p>
 </details>
-
+--------
 
 > Q. How to set the user name and email on my system?
 <details><summary>Ans.</summary>
@@ -161,6 +166,7 @@ $ git config --global user.name "your name"
 ```
 </p>
 </details>
+--------
 
 > Q. How to commit a file to git repository?
 <details><summary>Ans.</summary>
@@ -176,7 +182,7 @@ $ git commit -m -a "Message to add while commiting" #if files are not already ad
 ```
 </p>
 </details>
-
+--------
 
 > Q. How to check all the commits done to a repository?
 <details><summary>Ans.</summary>
@@ -190,7 +196,7 @@ $ git log --oneline #for concise log
 ```
 </p>
 </details>
-
+--------
 
 > Q. How to delete a file which hasn't been staged as yet i.e. untracked?
 <details><summary>Ans.</summary>
@@ -212,6 +218,10 @@ Hence it can be deleted by below options:
 
 #This is essentially reset
 $ git reset HEAD file3.txt
+```
+</p>
+</details>
+--------
 
 > Q. How to delete a file from the tracked list
 i.e. from staging area and bring it to a previous commit state?
@@ -231,7 +241,7 @@ $ git checkout -- file3.txt
 ```
 </p>
 </details>
-
+--------
 
 > Q. How to delete a file from the repository which was previously committed and if staging area is clean?
 Scenario being "git status" mentions working tree as clean since file had been committed earlier.
@@ -253,6 +263,7 @@ $ git rm file3.txt --cache
 ```
 </p>
 </details>
+--------
 
 > Q. How to delete a file, which was previously committed, from the repository  and
 if it is the same file which has been added to staging area just now?
@@ -274,6 +285,7 @@ $ git rm file3.txt --cache
 ```
 </p>
 </details>
+--------
 
 > Q. How to delete a file, which was previously committed, from the repository and
 from the hard disk?
@@ -295,6 +307,7 @@ $ git rm file3.txt
 ```
 </p>
 </details>
+--------
 
 > Q. How to recover a file which you just "rm(ed)" causing it to go away from local?
 If the file was already added to staging area how will you recover the staged version?
@@ -310,7 +323,7 @@ $ git checkout -- file3.txt
 ```
 </p>
 </details>
-
+--------
 
 > Q. How to recover a file which you just "rm(ed)" causing it to go away from local?
 You didn't stage your changes, then which version will be returned and how?
@@ -326,6 +339,7 @@ $ git checkout -- file3.txt
 ```
 </p>
 </details>
+--------
 
 > Q. How to recover a file which you just "git rm(ed)" causing it to go away from everywhere?
 <details><summary>Ans.</summary>
@@ -346,6 +360,7 @@ $ git checkout -- file3.txt
 ```
 </p>
 </details>
+--------
 
 > Q. How to recover a file's older version if you just "committed" a newer version by mistake?
 <details><summary>Ans.</summary>
@@ -365,7 +380,7 @@ $ git revert --no-edit HEAD
 ```
 </p>
 </details>
-
+--------
 
 > Q. How to commit a file without adding additional commit.
 Perhaps reusing the last commit object?
@@ -384,6 +399,7 @@ $ git rm file3.txt --cache
 ```
 </p>
 </details>
+--------
 
 > Q. How to create a branch?
 <details><summary>Ans.</summary>
@@ -395,6 +411,7 @@ $ git branch feature-1
 ```
 </p>
 </details>
+--------
 
 > Q. How to move to a branch?
 <details><summary>Ans.</summary>
@@ -410,6 +427,7 @@ $ git checkout -b feature-1
 ```
 </p>
 </details>
+--------
 
 > Q. How to list all the branches available?
 <details><summary>Ans.</summary>
@@ -420,6 +438,7 @@ $ git branch
 ```
 </p>
 </details>
+--------
 
 > Q. How to know your current branch you are in?
 <details><summary>Ans.</summary>
@@ -433,3 +452,4 @@ $ cat .git/HEAD | awk -F"heads\/" '{print $2}'
 ```
 </p>
 </details>
+--------
