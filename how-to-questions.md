@@ -500,6 +500,8 @@ $ git remote -v
 
 > Q. If you are in a feature-1 branch, and made some edits, how will you perform
 a fast-forward merge to master branch locally?
+
+How will you perform the updates to remote
 <details><summary>Ans.</summary>
 <p>
 
@@ -513,6 +515,8 @@ $ git pull
 #Ensure you have merge with latest code in master using fast-forward only
 $ git merge feature-1 --ff-only
 
+#Ensure remote repo has the same code
+$ git push
 ```
 </p>
 </details>
