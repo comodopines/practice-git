@@ -13,7 +13,7 @@ $ git init
 ```
 </p>
 </details>
-
+------
 
 > Q. What does ```git init ``` command do?
 <details><summary>Ans.</summary>
@@ -28,7 +28,7 @@ various objects within a working directory (/apps/myDir/ in our case).
 ```
 </p>
 </details>
-
+------
 
 > Q. Are working directory, staging area and git repository same?
 <details><summary>Ans.</summary>
@@ -52,7 +52,7 @@ Exa. git commit -m "Message"
 ```
 </p>
 </details>
-
+------
 
 > Q. What is an untracked versus a tracked file?
 <details><summary>Ans.</summary>
@@ -72,8 +72,7 @@ Tracked files are shown in green in "git status" output.
 ```
 </p>
 </details>
-
-
+------
 
 > Q. Explain the fields of "git ls-files -s" output?
 <details><summary>Ans.</summary>
@@ -93,6 +92,7 @@ Below are explanation of c1, c2, c3 and c4:
 ```
 </p>
 </details>
+------
 
 > Q. What hashing function git uses to generate column2 (c2) above?
 <details><summary>Ans.</summary>
@@ -103,7 +103,7 @@ SHA1. Its output is a 40 characters long hexadecimal string
 ```
 </p>
 </details>
-
+------
 
 > Q. Can the sha1 hash string output be more than 40 characters?
 <details><summary>Ans.</summary>
@@ -117,6 +117,7 @@ the hashing string can't be greater or less than 40 characters.
 ```
 </p>
 </details>
+------
 
 > Q. What is this input to sha1 hash function to generate these hashes?
 <details><summary>Ans.</summary>
@@ -131,6 +132,7 @@ The hash is generated using 4 elements:
 ```
 </p>
 </details>
+------
 
 > Q. Can two files have same hash?
 <details><summary>Ans.</summary>
@@ -141,6 +143,7 @@ Yes, if the object type, size and content of two files is same then their hash w
 ```
 </p>
 </details>
+------
 
 > Q. How many object types exist in git?
 <details><summary>Ans.</summary>
@@ -156,6 +159,7 @@ There are four types of object:
 ```
 </p>
 </details>
+------
 
 > Q. My files have already been added to staging area, 
 did something change in .git directory at this point?
@@ -178,6 +182,7 @@ $ /apps/myDir/.git/objects/e6/9de29bb2d1d6434b8b29ae775ad8c2e48c5391
 ```
 </p>
 </details>
+------
 
 > Q. If only two hexadecimal characters from file hash are being used to create a directory under .git/objects/ folder,
 then how many unique folders can be created in .git/objects directory?
@@ -226,7 +231,7 @@ where "e6" is folder and remaining 38 were used as filename.
 ```
 </p>
 </details>
-
+------
 
 > Q. If only two hexadecimal characters from file hash 
 are being used to create a directory under .git/objects/ folder, then :
@@ -264,7 +269,7 @@ hence (xx) above becomes (2 exp 8) * (2 exp 152) = 2 exp (8+152) = 2 exp 160
 ```
 </p>
 </details>
-
+------
 
 > Q. I have added files using "git add", can I commit files now using "git commit"?
 Or do I need to check some pre-requisite?
@@ -277,6 +282,7 @@ to commit files. If not, we need to configure user name and email.
 ```
 </p>
 </details>
+------
 
 > Q. How can I check what is the current user.name and user.email
 configured on my system?
@@ -291,7 +297,7 @@ $ git config --list | grep user
 ```
 </p>
 </details>
-
+------
 
 > Q. Once user and email is set what does "git commit" command achieve?
 <details><summary>Ans.</summary>
@@ -321,6 +327,7 @@ $git cat-file -p <hash of tree object for above commit object first line>
 ```
 </p>
 </details>
+------
 
 > Q. Ok, so if file content is saved as blob object, commit is saved as commit object
 then why do we need the tree object?
@@ -363,6 +370,7 @@ cd ${WORKDIR}
 ```
 </p>
 </details>
+------
 
 > Q. What is a branch in git?
 <details><summary>Ans.</summary>
@@ -373,3 +381,4 @@ Branch is chain of commits which offshoot from the main development branch.
 ```
 </p>
 </details>
+------
