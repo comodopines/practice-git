@@ -430,7 +430,29 @@ Tree object is a way to connect hash string to its filename, type and permission
 
 #You can use below snippet to find each type of object 
 which gets created after a commit.
-$ WORKDIR=$(pwd); OBJDIR=$WORKDIR/.git/objects/; cd ${OBJDIR};clear;echo;echo;echo "|-> Obj Dir : "${OBJDIR}; find . -type f | while read fileName; do HASH=`echo ${fileName}|sed "s/\.//g" | sed "s/\///g"` ;echo "|  |--> File Name: "${fileName}; echo "|  |   |--> File Hash : "${HASH}; echo "|  |   |--> File Type : "`git cat-file -t ${HASH}`;echo "|  |   |--> File Size : "`git cat-file -s ${HASH}` ; echo "|  |   |--> File Data : ";git cat-file -p ${HASH}| while read line; do echo "|  |     "${line};done; echo "|  | "; echo "|  | ";done; cd ${WORKDIR}
+#/bin/bash
+WORKDIR=$(pwd); 
+OBJDIR=$WORKDIR/.git/objects/; 
+cd ${OBJDIR};
+clear;
+echo;echo;
+echo "|-> Obj Dir : "${OBJDIR}; 
+find . -type f | while read fileName; 
+do 
+   HASH=`echo ${fileName}|sed "s/\.//g" | sed "s/\///g"` ;
+   echo "|  |--> File Name: "${fileName}; 
+   echo "|  |   |--> File Hash : "${HASH}; 
+   echo "|  |   |--> File Type : "`git cat-file -t ${HASH}`;
+   echo "|  |   |--> File Size : "`git cat-file -s ${HASH}` ; 
+   echo "|  |   |--> File Data : ";
+   git cat-file -p ${HASH}| while read line; 
+   do 
+      echo "|  |     "${line};
+   done; 
+   echo "|  | "; 
+   echo "|  | ";
+done; 
+cd ${WORKDIR}
 
 ```
 </p>
