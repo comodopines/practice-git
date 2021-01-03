@@ -120,8 +120,11 @@ Tracked files are shown in green in "git status" output.
 $ git status
 $ git ls-files -s
 
-"git status" will show currently tracked (not committed) files (file1.txt) in green.
-"git ls-files -s" output can give can be a test to see if a file is tracked, but what if it is already committed? 
+"git status" will show currently tracked (not committed) 
+files (file1.txt) in green.
+
+"git ls-files -s" output can give can be a test to see 
+if a file is tracked, but what if it is already committed? 
 
 ###Perform below steps to see it in action
 ###create directory using "mkdir"
@@ -135,19 +138,23 @@ $ cd test
 $ git init 
 $ touch file1.txt 
 
-###check what files exist in working directory and are untracked using "git status". file1.txt should be in red(untracked).
+###check what files exist in working directory and are untracked using "git status". 
+###file1.txt should be in red(untracked).
 $ git status 
 
-###check which files are in staging area using "git ls-files -s". Should return nothing. 
+###check which files are in staging area using "git ls-files -s". 
+###Should return nothing. 
 $ git ls-files -s 
 
 ###create another blank file file2.txt in test directory.
-###check what files exist in working directory and are untracked. file1.txt and file2.txt should be in red(untracked).
+###check what files exist in working directory and are untracked. 
+###file1.txt and file2.txt should be in red(untracked).
 $ touch file2.txt 
 $ git status 
 
 ###add file1.txt to staging area using "git add"
-###"git status" should now show file1.txt in green (tracked) and file2.txt in red (untracked)
+###"git status" should now show file1.txt in green (tracked) 
+###and file2.txt in red (untracked)
 $ git add file1.txt 
 $ git status 
 
@@ -160,10 +167,14 @@ $ git ls-files -s
 ###add file2.txt to staging area
 $ git add file2.txt 
 
-###Check file1.txt and file2.txt should be in green meaning it is in staging area.
+###Check file1.txt and file2.txt should be in green font
+###representing them being in staging area.
 $ git status 
 
 ###Below command should show file1.txt and file2.txt
+###This can only confirm if file is in staging area or not
+###Only a good test if files are being staged for the first time
+###As even after doing commit these files should be present here
 $ git ls-files -s 
 
 ###Should have content something similar to below
@@ -182,10 +193,13 @@ $ git ls-files -s
 c1     c2                                       c3      c4
 100644 e69de29bb2d1d6434b8b29ae775ad8c2e48c5391 0       file1.txt
 
-100644 - c1 defines type of file and its permission (100 being regular file 644 being it permission out of 777)
-e69de2... - c2 this is the hash of the file1.txt
-0 - c3 denotes how many versions of files exist in the repo. 0 denotes 0th version (only one version)
-file1.txt - c4 is the file name in staging area.
+Below are explanation of c1, c2, c3 and c4:
+1) 100644    - c1 defines type of file and its permission
+               (100 being regular file 644 being it permission out of 777)
+2) e69de2... - c2 this is the hash of the file1.txt
+3) 0         - c3 denotes how many versions of files exist in 
+               the repo. 0 denotes 0th version (only one version)
+4) file1.txt - c4 is the file name in staging area.
 ```
 </p>
 </details>
@@ -429,7 +443,9 @@ some other "things" hashed together (object type [blob], size and null).
 Tree object is a way to connect hash string to its filename, type and permissions.
 
 #You can use below snippet to find each type of object 
-which gets created after a commit.
+#which gets created after a commit.
+#
+#
 #/bin/bash
 WORKDIR=$(pwd); 
 OBJDIR=$WORKDIR/.git/objects/; 
