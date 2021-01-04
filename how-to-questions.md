@@ -521,3 +521,40 @@ $ git push
 </p>
 </details>
 --------
+
+> Q. How to rebase?
+<details><summary>Ans.</summary>
+<p>
+
+```bash
+#Go to the feature branch
+$ git checkout feature
+
+#Rebase the master
+$ git rebase master
+
+#This aligns the master commits before the current feature branch commits in a line
+#Branches can then be merged with fast forward as all commits are in line
+```
+</p>
+</details>
+--------
+
+> Q. How to rebase interactively to group latest 5 commits to one?
+<details><summary>Ans.</summary>
+<p>
+
+```bash
+#Go to the feature branch
+$ git checkout feature
+
+#Rebase the master interactively
+$ git rebase -i HEAD~5
+
+#This will being up the prompt where you can decide if u wanna
+#pick, squash...etc. Pick one of the commits which u like and squash all others
+
+```
+</p>
+</details>
+--------
